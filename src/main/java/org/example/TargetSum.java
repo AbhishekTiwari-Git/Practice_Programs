@@ -2,8 +2,8 @@ package org.example;
 
 public class TargetSum {
     public static void main(String[] args) {
-        int[] numbers = {1, 4, 45, 6, 10, 8};
-        int targetSum = 22;
+        int[] numbers = {7, 12, 3, 1, 2, -6, 5, -8, 6};
+        int targetSum = 0;
         int thirdNum;
         boolean flag = false;
         for(int i =0;i<numbers.length-1;i++){
