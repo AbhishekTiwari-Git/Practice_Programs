@@ -4,33 +4,33 @@ import java.util.Stack;
 
 public class BalancedBrackets {
     public static void main(String[] args) {
-        if (checkBalance() == "Yes") {
-            System.out.println("Balanced");
-        } else {
-            System.out.println("Not Balanced");
-        }
-    }
-
-    static boolean isMatchingPair(char open, char close) {
-        return (open == '(' && close == ')' ||
-                open == '[' && close == ']' ||
-                open == '{' && close == '}');
-    }
-
-    public static String checkBalance() {
+        BalancedBrackets bb = new BalancedBrackets();
         String brackets = "([{}])";
-        char[] bracArr = brackets.toCharArray();
+        if (bb.isBalanced(brackets)) {
+            System.out.println("Brackets are balanced");
+        } else {
+            System.out.println("Brackets are not balanced");
+        }
+
+    }
+
+    public boolean isBalanced(String s1) {
         Stack<Character> stack = new Stack<>();
-        for (Character ch : bracArr) {
+        for (Character ch : s1.toCharArray()) {
             if (ch == '(' || ch == '[' || ch == '{') {
                 stack.push(ch);
             } else {
                 if (stack.isEmpty() || !isMatchingPair(stack.pop(), ch)) {
-                    return "NO";
+                    return false;
                 }
             }
-
         }
-        return stack.isEmpty() ? "Yes" : "No";
+        return true;
+    }
+
+    public boolean isMatchingPair(Character Open, Character close) {
+        return (Open == '{' && close == '}'
+                || Open == '[' && close == ']'
+                || Open == '(' && close == ')');
     }
 }

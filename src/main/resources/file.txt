@@ -1,0 +1,83 @@
+WorkbookFactory book;
+Sheet sheet;
+
+public static void getTestData(String sheetName){
+try{
+FileInputStream file = new FileInputStream("FilePath");
+}catch (Exception e){
+e.printStackTrace();
+}try{
+book = WorkbookFactory.create(file);
+}catch (Exception e){
+e.printStackTrace();
+}
+sheet = book.getSheet("SheetName");
+Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+for(int i =0;i<sheet.getLastRowNum();i++){
+for(int j=0;j<sheet.getRow(0).getLastCellNum();j++){
+data[i][j] = sheet.getRow(i+1).getCell(k).toString();
+}
+}
+return data;
+}
+
+@DataProvider
+public Object[][] getTestData(){
+Object data[][] = TestUtils.getTestData("Login");
+return data;
+}
+
+@Test(dataProvider="getTestData")
+public static void(String UN, String Pwd){
+
+}
+
+======================================================================================================
+
+Connection con;
+Statement stmt;
+ResultSet rs;
+
+String dbUrl = "URL";
+String query = "query";
+con = DriverManager.getConnection(url,"UN","PWD");
+stmt.createConnection();
+rs = stmt.executeQuery(query);
+while(rs.next()){
+}
+
+======================================================================================================
+
+Implicit Wait();
+
+driver.manage().timeouts.implicitlyWait(Duration.ofSeconds(20));
+
+ExplicitWait();
+
+Wait<WebDriver> wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+wait.Until(ExpectedConditions.visibilityOfElementsToBeLocated(element));
+
+Fluent Wait ();
+
+Wait<WebDriver> wait = new FluentWait<>(driver)
+                      .withTimeout(Duration.ofMinuted(5))
+                      .pollingEvery(Duration.ofSeconds(5))
+                      .ignoring(Exception e)
+                      .withMessage("");
+        wait.until(ExpectedConditions.)
+
+======================================================================================================
+
+Take Screenshots:
+
+Method 1: Take screenshot of particular element
+
+WebElement ele = driver.findElement(By.Id("username"));
+File src = driver.getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile("src",new File("path"));
+
+Method 2 : Take Screenshot for complete page
+
+TakesScreenshot tkss = (TakesScreenshot)driver;
+File srcFile = tkss.getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile(tkss,new File("path"));
