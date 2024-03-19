@@ -3,27 +3,17 @@ package org.example;
 import java.util.*;
 
 public class Sample {
+
     public static void main(String[] args) {
-        int[] num = {7, 12, 3, 1, 2, -6, 5, -8, 6};
-        int target = 4;
-        Arrays.sort(num);
-        Set<List<Integer>> list = new HashSet<>();
-        for(int i=0;i<num.length-2;i++){
-            int left = i+1, right = num.length-1;
-            while(left<right){
-                int sum = num[i]+num[left]+num[right];
-                if(sum == 0){
-                    list.add(Arrays.asList(num[i],num[left],num[right]));
-                    left++;
-                    right--;
-                }
-               else if(sum<0){
-                    left++;
-                }else{
-                    right--;
-                }
+        String str = "AAABCCCCD";
+        int maxLen =0;
+        for(int left=0,right =0;right<str.length();right++){
+            int cnt = str.indexOf(str.charAt(right),left);
+            if(cnt!=right){
+                left = cnt+1;
             }
+            maxLen = Math.max(maxLen,right-left+1);
         }
-        System.out.println(list);
+        System.out.println(maxLen);
     }
 }
