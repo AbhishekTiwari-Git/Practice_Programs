@@ -18,7 +18,7 @@ public class ReverseLinkedList {
     public static Node reverseLL(Node head) {
         Node previous = null;
         Node current = head;
-        Node nextNode = null;
+        Node nextNode;
 
         while (current != null) {
             nextNode = current.next;
