@@ -11,4 +11,5 @@ public class Swap2Num {
 
         System.out.println("Value of a is :- "+a+" "+"Value of b is :- "+b);
     }
+
 }

@@ -1,13 +1,8 @@
 package org.example;
 
+import java.util.Arrays;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static java.util.Arrays.stream;
-import static java.util.stream.Collectors.joining;
-
-public class Random {
+public class CountOfNbrOfChangingKeys {
     public static void main(String[] args) {
         String str = "aAbBcccDefGH";
         int left =0,count=0;
@@ -15,9 +10,8 @@ public class Random {
             if(str.toLowerCase().charAt(i)!=str.toLowerCase().charAt(left)){
                 count++;
             }
-                left++;
+            left++;
         }
         System.out.println(count);
     }
-
 }
