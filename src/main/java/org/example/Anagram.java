@@ -19,7 +19,7 @@ public class Anagram {
         }
         char[] strCh1 = str1.toLowerCase().toCharArray();
         char[] strCh2 = str2.toLowerCase().toCharArray();
-        Integer count = 0;
+        int count = 0;
         Map<Character,Integer> map = new HashMap<>();
         for(Character ch1 : strCh1){
             map.put(ch1,++count);
