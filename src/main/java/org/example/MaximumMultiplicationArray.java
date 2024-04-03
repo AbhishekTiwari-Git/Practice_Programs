@@ -10,9 +10,9 @@ public class MaximumMultiplicationArray {
             leftProduct = leftProduct == 0 ? 1 : leftProduct;
             rightProduct = rightProduct == 0 ? 1 : rightProduct;
 
-            leftProduct *= nums[i];
+            leftProduct = leftProduct * nums[i];
 
-            rightProduct *= nums[nums.length - 1 - i];
+            rightProduct = rightProduct * nums[nums.length - 1 - i];
 
             ans = Math.max(ans, Math.max(leftProduct, rightProduct));
         }
