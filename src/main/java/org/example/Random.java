@@ -9,15 +9,31 @@ import static java.util.stream.Collectors.joining;
 
 public class Random {
     public static void main(String[] args) {
-        String str = "aAbBcccDefGH";
-        int left =0,count=0;
-        for(int i=1;i<str.length();i++){
-            if(str.toLowerCase().charAt(i)!=str.toLowerCase().charAt(left)){
-                count++;
-            }
-                left++;
+        String original = "Title";
+        String replacement = "paper";
+        System.out.println(isIsoMorphic(original.toLowerCase(),replacement.toLowerCase()));
+
+    }
+
+    private static boolean isIsoMorphic(String orig, String repl) {
+        if(orig.length()!=repl.length()){
+            return false;
         }
-        System.out.println(count);
+        Map<Character,Character> map = new HashMap<>();
+        for(int i=0;i<orig.length()-1;i++){
+            if(!map.containsKey(orig.charAt(i))){
+                if(!map.containsValue(repl.charAt(i))){
+                    map.put(orig.charAt(i),repl.charAt(i));
+                }
+                else {
+                    return false;
+                }
+            }
+            else if(map.containsKey(orig.charAt(i))!= map.containsValue(repl.charAt(i))){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

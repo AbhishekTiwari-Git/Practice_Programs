@@ -15,7 +15,7 @@ public class ReverseStringNew {
         for (int i = strCh.length - 1; i >= 0; i--) {
             rev = rev + strCh[i];
         }
-        System.out.println("Reversed String is : " + rev);
+        System.out.println("Reversed String is 1 : " + rev);
     }
 
     public static void revString(String str) {
@@ -25,7 +25,7 @@ public class ReverseStringNew {
         for (int i = strArr.length - 1; i >= 0; i--) {
             revStr = revStr + " " + strArr[i];
         }
-        System.out.println("Reversed String is : " + revStr);
+        System.out.println("Reversed String is 2 : " + revStr);
     }
 
     public static void revChar(String str) {
@@ -35,6 +35,6 @@ public class ReverseStringNew {
         for (int i = 0; i < strArr.length - 1; i++) {
             revChars = revChars + strCh[i];
         }
-        System.out.println("Reversed Character String is : " + revChars);
+        System.out.println("Reversed Character String is 3 : " + revChars);
     }
 }

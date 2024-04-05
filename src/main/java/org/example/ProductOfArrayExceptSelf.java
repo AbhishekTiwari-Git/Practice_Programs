@@ -12,7 +12,7 @@ public class ProductOfArrayExceptSelf {
         int[] ans = new int[4];
         left[0] = 1;
         right[numArr.length-1]=1;
-        for(int i=1;i<left.length;i++){
+        for(int i=1;i<numArr.length;i++){
             left[i]= left[i-1]*numArr[i-1];
         }
         for(int j=numArr.length-2;j>-1;j--){
