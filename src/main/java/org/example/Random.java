@@ -9,18 +9,28 @@ import static java.util.stream.Collectors.joining;
 
 public class Random {
     public static void main(String[] args) {
-        int[] nums = {0, 0, 1, 1, 0, 0, 1, 1};
-        int left = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                int temp = nums[i];
-                nums[i] = nums[left];
-                nums[left] = temp;
-                left++;
-            }
-        }
-        System.out.println(Arrays.toString(nums));
+        System.out.println(isAnagram("aacc","ccac"));
     }
 
+    public static boolean isAnagram(String s1,String s2){
+        s1 = s1.toLowerCase().replace(" ","");
+        s2 = s2.toLowerCase().replace(" ","");
 
+        int[] counts = new int[26];
+
+        for(int i=0;i<s1.length();i++){
+            counts[s1.charAt(i)-'a']++;
+        }
+
+        for(int i=0;i<s2.length();i++){
+            counts[s2.charAt(i)-'a']--;
+        }
+
+        for(int count : counts){
+            if(count!=0){
+                return false;
+            }
+        }
+        return true;
+    }
 }

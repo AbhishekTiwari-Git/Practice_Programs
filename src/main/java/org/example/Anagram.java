@@ -5,27 +5,25 @@ import java.util.Map;
 
 public class Anagram {
     public static void main(String[] args) {
-        ;
-        if ((isAnagram("God", "odq"))) {
-            System.out.println("Strings are Anagram");
-        } else {
-            System.out.println("Strings are not Anagram");
-        }
+        System.out.println(isAnagram("aacc", "ccac"));
     }
 
-    public static boolean isAnagram(String str1, String str2) {
-        if (str1.length() != str2.length()) {
-            return false;
+    public static boolean isAnagram(String s1, String s2) {
+        s1 = s1.toLowerCase().replace(" ", "");
+        s2 = s2.toLowerCase().replace(" ", "");
+
+        int[] counts = new int[26];
+
+        for (int i = 0; i < s1.length(); i++) {
+            counts[s1.charAt(i) - 'a']++;
         }
-        char[] strCh1 = str1.toLowerCase().toCharArray();
-        char[] strCh2 = str2.toLowerCase().toCharArray();
-        int count = 0;
-        Map<Character,Integer> map = new HashMap<>();
-        for(Character ch1 : strCh1){
-            map.put(ch1,++count);
+
+        for (int i = 0; i < s2.length(); i++) {
+            counts[s2.charAt(i) - 'a']--;
         }
-        for(Character ch2 : strCh2){
-            if(map.get(ch2)==null){
+
+        for (int count : counts) {
+            if (count != 0) {
                 return false;
             }
         }
