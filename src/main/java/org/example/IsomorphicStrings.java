@@ -25,7 +25,7 @@ public class IsomorphicStrings {
                     return false;
                 }
             } else {
-                if (map.get(original.charAt(i)) != map.get(replacement.charAt(i))) {
+                if (map.get(original.charAt(i)) != replacement.charAt(i)) {
                     return false;
                 }
             }
