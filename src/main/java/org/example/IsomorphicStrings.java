@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class IsomorphicStrings {
     public static void main(String[] args) {
-        String original = "badc";
+        String original = "babc";
         String replacement = "kiip";
 
         System.out.println(isIsomorphic(original, replacement));
