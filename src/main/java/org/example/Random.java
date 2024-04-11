@@ -9,28 +9,32 @@ import static java.util.stream.Collectors.joining;
 
 public class Random {
     public static void main(String[] args) {
-        System.out.println(isAnagram("aacc","ccac"));
+        int[] arr = {1, 3, 5, 9, 10, 11, 12, 15, 20, 25, 30};
+        Arrays.sort(arr);
+        System.out.println(bs(arr));
     }
 
-    public static boolean isAnagram(String s1,String s2){
-        s1 = s1.toLowerCase().replace(" ","");
-        s2 = s2.toLowerCase().replace(" ","");
+    public static boolean bs(int[] num) {
+        int number = 90;
+        int left = 0;
+        int right = num.length-1;
 
-        int[] counts = new int[26];
+        while(left<=right) {
+            int mid = (left + right) / 2;
 
-        for(int i=0;i<s1.length();i++){
-            counts[s1.charAt(i)-'a']++;
-        }
+            if (num[mid] == number) {
+                return true;
+            }
 
-        for(int i=0;i<s2.length();i++){
-            counts[s2.charAt(i)-'a']--;
-        }
+            if (num[mid] > number) {
+                right = mid - 1;
+            }
 
-        for(int count : counts){
-            if(count!=0){
-                return false;
+            if (num[mid] < number) {
+                left = mid + 1;
             }
         }
-        return true;
+
+        return false;
     }
 }
