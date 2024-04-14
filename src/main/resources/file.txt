@@ -1,3 +1,24 @@
+Multiple Window Handle :
+
+Set<String> handle = driver.getWindowHandles();
+Iterator<String> it = handle.iterator();
+
+String parentWinId = it.next();
+String childWinId = it.next();
+
+driver.switchTo().window(childWinId);
+driver.switchTo().window(parentWinId);
+======================================================================================================
+Alert Handling (Alert Class)
+
+Alert alert = driver.switchTo().alert();
+alert.getText();
+alert.accept();
+alert.dismiss();
+
+Frame Handling
+driver.switchTo().frame(frameIndex or framename)
+======================================================================================================
 Workbook book;
 Sheet sheet;
 
@@ -75,7 +96,7 @@ Take Screenshots:
 Method 1: Take screenshot of particular element
 
 WebElement ele = driver.findElement(By.Id("username"));
-File src = driver.getScreenshotAs(OutputType.FILE);
+File src = ele.getScreenshotAs(OutputType.FILE);
 FileUtils.copyFile("src",new File("path"));
 
 Method 2 : Take Screenshot for complete page
@@ -84,10 +105,21 @@ TakesScreenshot tkss = (TakesScreenshot)driver;
 File srcFile = tkss.getScreenshotAs(OutputType.FILE);
 FileUtils.copyFile(tkss,new File("path"));
 
+======================================================================================================
 
+Comparator vs Comparable
 
+Comparator - If we want to specifiy our own logic to sort then we need to use comparator
+             Comparator is a functional interface, it has a method-> int compare(T o1,T o2)
+Comparable - If we want to give power to class to compare itself we use comparable
+             Comparable is also an Interface which has method -> int compareTo()
 
+======================================================================================================
 
+== vs .equals()
+
+== -> is an operator, it compares the memory address and references of an object. This is mainly used for all primitive data types
+.equals() -> is a method, it compares the actual value of an object. this is mainly used for all objects other than primitive data types
 
 
 

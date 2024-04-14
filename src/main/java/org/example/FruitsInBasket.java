@@ -2,22 +2,22 @@ package org.example;
 
 import java.util.*;
 
-public class Random {
+public class FruitsInBasket {
     public static void main(String[] args) {
         int[] fruitsArr = {1, 2, 1, 1, 3, 4, 2, 2, 2, 2, 4};
         int left = 0;
         int max = 0;
-        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> basket = new HashMap<>();
         for (int i = 0; i < fruitsArr.length; i++) {
-            int currentCnt = map.getOrDefault(fruitsArr[i], 0);
-            map.put(fruitsArr[i], currentCnt+1);
+            int currentCount = basket.getOrDefault(fruitsArr[i], 0);
+            basket.put(fruitsArr[i], currentCount + 1);
 
-            while (map.size() > 2) {
-                int fruitCount = map.get(fruitsArr[left]);
+            while (basket.size() > 2) {
+                int fruitCount = basket.get(fruitsArr[left]);
                 if (fruitCount == 1) {
-                    map.remove(fruitsArr[left]);
+                    basket.remove(fruitsArr[left]);
                 } else {
-                    map.put(fruitsArr[left], fruitCount - 1);
+                    basket.put(fruitsArr[left], fruitCount - 1);
                 }
                 left++;
             }
