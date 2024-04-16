@@ -4,25 +4,28 @@ import java.util.*;
 
 public class Random {
     public static void main(String[] args) {
-        int[] fruitsArr = {1, 2, 1, 1, 3, 4, 2, 2, 2, 2, 4};
-        int left = 0;
-        int max = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < fruitsArr.length; i++) {
-            int currentCnt = map.getOrDefault(fruitsArr[i], 0);
-            map.put(fruitsArr[i], currentCnt+1);
+        int[] num = {7, -12, 4, 4, 2, 6, 5, -8, 6};
+        Arrays.sort(num);
+        int target = 0;
+        Set<List<?>> result = new HashSet<>();
+        for(int i=0;i<num.length-2;i++){
+            int left = i+1;
+            int right = num.length-1;
 
-            while (map.size() > 2) {
-                int fruitCount = map.get(fruitsArr[left]);
-                if (fruitCount == 1) {
-                    map.remove(fruitsArr[left]);
-                } else {
-                    map.put(fruitsArr[left], fruitCount - 1);
+            while(left<right){
+                int sum = num[i]+num[left]+num[right];
+
+                if(sum == target){
+                    result.add(Arrays.asList(num[i],num[left],num[right]));
+                    left++;
+                    right--;
+                }else if(sum<target){
+                    left++;
+                }else {
+                    right--;
                 }
-                left++;
             }
-            max = Math.max(max, i - left + 1);
         }
-        System.out.println(max);
+        System.out.println(result);
     }
 }

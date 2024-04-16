@@ -121,8 +121,43 @@ Comparable - If we want to give power to class to compare itself we use comparab
 == -> is an operator, it compares the memory address and references of an object. This is mainly used for all primitive data types
 .equals() -> is a method, it compares the actual value of an object. this is mainly used for all objects other than primitive data types
 
+======================================================================================================
+
+RestAssured Syntax :
+
+Response response = SerenityRest.given().
+                    baseUri("baseurl").
+                    headers(map).
+                    when().
+                    body(map).
+                    post(endPoints);
+
+JsonPath.read(response.asString(),"$..itemNumber");
+
+Validatable Response = given().baseUri("url")
+                       .when()
+                       .headers(map)
+                       .post(endpoints)
+                       .then()
+                       .assertThat()
+                       .statusCode(200);
 
 
+
+driver.manage().timeouts().implicitelyWait(Duration.ofSeconds(20));
+
+Wait<WebDriver> wait = new WebDriverWait(driver,Duration.ofSeconds(20))>;
+wait.until(expectedConditions.elementToBeClickable());
+
+Wait<Webdriver> wait = new FluentWait<>(driver)
+                        .withTimeout(Duration.ofSeconds(10))
+                       .pollingEvery(Duration.ofSeconds(2))
+                       .ignoringAll(Exception.class);
+Webelement ele = wait.until(new Function<WebDriver,WebElement>(){
+public WebElement apply (WebDriver driver){
+return driver.findElement(By.id(""));
+}
+}
 
 
 
