@@ -1,12 +1,11 @@
 package org.example;
 
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BTLevelOrderTraversal {
 
-    class TreeNode {
+    static class TreeNode {
         int data;
         TreeNode left, right;
 
@@ -20,9 +19,14 @@ public class BTLevelOrderTraversal {
         TreeNode node40 = new TreeNode(40);
         TreeNode node30 = new TreeNode(30);
         TreeNode node20 = new TreeNode(20);
+        TreeNode node50 = new TreeNode(50);
+        TreeNode node70 = new TreeNode(70);
 
         rootNode.left = node30;
         rootNode.right = node20;
+
+        node30.left = node50;
+        node30.right = node70;
 
         node20.right = node40;
 
@@ -47,10 +51,43 @@ public class BTLevelOrderTraversal {
         }
     }
 
+    public void inOrderTraversal(TreeNode root) {
+        if(root != null){
+            inOrderTraversal(root.left);
+            System.out.print(root.data + " ");
+            inOrderTraversal(root.right);
+        }
+    }
+
+    public void preOrderTraversal(TreeNode root) {
+        if(root != null){
+            System.out.print(root.data + " ");
+            inOrderTraversal(root.left);
+            inOrderTraversal(root.right);
+        }
+    }
+
+    public void postOrderTraversal(TreeNode root) {
+        if(root != null){
+            inOrderTraversal(root.left);
+            inOrderTraversal(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+
     public static void main(String[] args) {
         BTLevelOrderTraversal lot = new BTLevelOrderTraversal();
         TreeNode rootNode = lot.createBT();
         lot.traverse(rootNode);
+        System.out.println();
+        System.out.println("---------------IN ORDER Traversal-------------------------");
+        lot.inOrderTraversal(rootNode);
+        System.out.println();
+        System.out.println("___________________PRE ORDER Traversal____________________");
+        lot.preOrderTraversal(rootNode);
+        System.out.println();
+        System.out.println("---------------------POST ORDER Traversal-----------------");
+        lot.postOrderTraversal(rootNode);
     }
 
 }
