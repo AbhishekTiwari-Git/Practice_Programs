@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class ReverseStringNew {
     public static void main(String[] args) {
         revString("My Name is Abhishek");
@@ -30,10 +32,20 @@ public class ReverseStringNew {
 
     public static void revChar(String str) {
         String[] strArr = str.split(" ");
-        char[] strCh = str.toCharArray();
         String revChars = "";
-        for (int i = 0; i < strArr.length - 1; i++) {
-            revChars = revChars + strCh[i];
+
+        for (int i = 0; i <= strArr.length - 1; i++) {
+            int start = 0;
+            int end = strArr[i].length()-1;
+            char[] c = strArr[i].toCharArray();
+            while(i<=end){
+                c[start] = (char) (c[start] ^ c[end]);
+                c[end] = (char) (c[start] ^ c[end]);
+                c[start] = (char) (c[start] ^ c[end]);
+                start++;
+                end--;
+            }
+            revChars = revChars + Arrays.toString(c);
         }
         System.out.println("Reversed Character String is 3 : " + revChars);
     }

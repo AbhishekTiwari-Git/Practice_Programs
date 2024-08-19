@@ -8,6 +8,13 @@ String childWinId = it.next();
 
 driver.switchTo().window(childWinId);
 driver.switchTo().window(parentWinId);
+
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript(script, args);
+js.executeScript(“document.getElementByID(‘element id ’).value = ‘xyz’;”);
+Js.executeScript(“alert(‘hello world’);”);
+js.executeScript(“return document.documentElement.innerText;”).toString();
+js.executeScript("arguments[0].click();", java);
 ======================================================================================================
 Alert Handling (Alert Class)
 
@@ -158,6 +165,82 @@ public WebElement apply (WebDriver driver){
 return driver.findElement(By.id(""));
 }
 }
+
+
+
+
+
+
+
+
+
+
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20))
+
+Wait<WebDriver> wait = new WebDriverWait<>(driver,10);
+wait.until(expectedConditions.elementTobeClickable());
+
+Wait<WebDriver> wait = new FluentWait<>()
+                       .withTimeout(Duration.ofSeconds(20))
+                       .pollingEvery(Duration.ofSeconds(5))
+                       .ignoring(Exception.class);
+
+WebElement ele = wait.until (new Function<WebDriver,WebElement>(){
+public WebElement apply(WebDriver driver){
+return driver.findElement(By.id(""));
+}
+}
+
+
+WebElement ele = driver....
+File src = ele.getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile(src,new File("path"))
+
+TakeScreenshot tkss = (TakeScreenshot)driver;
+File src = tkss.getScreenshotAs(OutputType.File).
+FileUtils.copyFile(src,new File("path"));
+
+Connection con;
+Statement stmt;
+
+String query = "";
+
+con = DriverManager.getConnection("dburl",un,pwd);
+stmt.createConnection();
+
+ResultSet rs = stmt.execute(query);
+
+
+Workbook book;
+Sheet sheet;
+
+public static Object[][] getTestData(SheetName){
+FileInputStream file = new FileInputStream("path");
+
+book = WorkbookFactory.create(file);
+sheet = book.getSheet("SheetName");
+
+Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+
+for(int i=0;i<getLastRowNum();i++){
+for(int j=0;j<sheet.getRow(0).getLastCellNum();j++{
+data[i][j] = sheet.getRow(i+1).getCell(j).toString();
+}
+}
+return data;
+
+Junit :
+
+
+
+
+
+
+
+
+
+
+
 
 
 

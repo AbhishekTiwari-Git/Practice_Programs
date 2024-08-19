@@ -16,12 +16,8 @@ public class FindDuplicate {
 
         Map<String,Integer> nameMap = new HashMap<String,Integer>();
         for (String names : name){
-            Integer count = nameMap.get(names);
-            if(count==null){
-                nameMap.put(names,1);
-            }else {
-                nameMap.put(names,++count);
-            }
+            int count = nameMap.getOrDefault(names,0);
+            nameMap.put(names,count+1);
         }
 
         Set<Map.Entry<String, Integer>> entry = nameMap.entrySet();

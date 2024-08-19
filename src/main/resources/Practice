@@ -1,0 +1,40 @@
+Junit Parallel :
+    - Feature Files are executed in parallel instead of Scenarios and Scenario Outline
+    - With Maven SureFire Plugin :
+        ~ Runner class should be named as *Test.java for e.g. RunCucumberTest.java
+        ~ Add Configuration
+            <parallel>methods</parallel>
+            <threadCount>4</threadCount>
+    - With Maven Fail Safe Plugin :
+        ~ Runner class should be named as *IT.java for e.g. RunCucumberIT.java
+        ~ Add Configuration
+            <parallel>methods</parallel>
+            <threadCount>4</threadCount>
+
+TestNG Parallel :
+    - In TestNG Scenarios are executed in Parallel mode.
+    - Extend the Runner class with AbstractTestNGCucumberTests class
+    - Override Scenario Method
+    - Set DataProvider parallel to true for e.g.
+    class RunnerTest extends AbstractTestNGCucumberTests{
+    @Override
+    @DataProvide(parallel = true)
+    public Object[][] scenarios(){
+    return super.scenarios();
+    }
+    }
+
+Reporting :
+Extent Report :
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features = {"/src/resources/features"},
+    glue = {"/stepDefinition"},
+    plugin = {"pretty","avenstack cucumber report adapter:"},
+    tags = {"smoke"}
+    )
+
+    public class TestRunner(){
+    }
+}

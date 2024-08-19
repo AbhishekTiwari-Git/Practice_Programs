@@ -35,8 +35,9 @@ public class BinaryTree {
 
     public void traverseBT(TreeNode root){
         if(root!=null){
-            System.out.println(root.data);
+
             traverseBT(root.left);
+            System.out.print(" "+root.data);
             traverseBT(root.right);
         }
     }

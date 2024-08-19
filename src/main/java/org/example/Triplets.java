@@ -28,7 +28,7 @@ public class Triplets {
 class triplets2{
     public static void main(String[] args) {
         int[] num = {7, 12, 3, 1, 2, -6, 5, -8, 6};
-        int target = 4;
+        int target = 0;
         Arrays.sort(num);
         Set<List<Integer>> list = new HashSet<>();
         for(int i=0;i<num.length-2;i++){

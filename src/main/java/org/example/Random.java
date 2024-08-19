@@ -4,28 +4,22 @@ import java.util.*;
 
 public class Random {
     public static void main(String[] args) {
-        int[] num = {7, -12, 4, 4, 2, 6, 5, -8, 6};
-        Arrays.sort(num);
-        int target = 0;
-        Set<List<?>> result = new HashSet<>();
-        for(int i=0;i<num.length-2;i++){
-            int left = i+1;
-            int right = num.length-1;
+        int[] num = {1,2,3,4,5,6,7};
+        int n = num.length-1;
+        int k =3;
+        reverse(num,0,n-k-1);
+        reverse(num,n-k,n);
+        reverse(num,0,n);
+        System.out.println(Arrays.toString(num));
+    }
 
-            while(left<right){
-                int sum = num[i]+num[left]+num[right];
-
-                if(sum == target){
-                    result.add(Arrays.asList(num[i],num[left],num[right]));
-                    left++;
-                    right--;
-                }else if(sum<target){
-                    left++;
-                }else {
-                    right--;
-                }
-            }
+    public static void reverse(int[] num,int start, int end){
+        while(start<=end){
+            int temp = num[start];
+            num[start] = num[end];
+            num[end] = temp;
+            start++;
+            end--;
         }
-        System.out.println(result);
     }
 }
