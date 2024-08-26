@@ -136,7 +136,7 @@ Response response = SerenityRest.given().
                     baseUri("baseurl").
                     headers(map).
                     when().
-                    body(map).
+                    body(json).
                     post(endPoints);
 
 JsonPath.read(response.asString(),"$..itemNumber");
@@ -209,44 +209,6 @@ con = DriverManager.getConnection("dburl",un,pwd);
 stmt.createConnection();
 
 ResultSet rs = stmt.execute(query);
-
-
-Workbook book;
-Sheet sheet;
-
-public static Object[][] getTestData(SheetName){
-FileInputStream file = new FileInputStream("path");
-
-book = WorkbookFactory.create(file);
-sheet = book.getSheet("SheetName");
-
-Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
-
-for(int i=0;i<getLastRowNum();i++){
-for(int j=0;j<sheet.getRow(0).getLastCellNum();j++{
-data[i][j] = sheet.getRow(i+1).getCell(j).toString();
-}
-}
-return data;
-
-Junit :
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
