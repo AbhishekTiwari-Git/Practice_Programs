@@ -8,9 +8,11 @@ public class Random {
         int n = num.length-1;
         int k =3;
         reverse(num,0,n-k-1);
+        System.out.println("first==> "+Arrays.toString(num));
         reverse(num,n-k,n);
+        System.out.println("second==> "+Arrays.toString(num));
         reverse(num,0,n);
-        System.out.println(Arrays.toString(num));
+        System.out.println("third==> "+Arrays.toString(num));
     }
 
     public static void reverse(int[] num,int start, int end){
