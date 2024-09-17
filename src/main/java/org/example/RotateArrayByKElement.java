@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class RotateArrayByKElement {
     public static void main(String[] args) {
         int[] arr1 = {1,2,3,4,5,6,7};
-        int k = 3;
+        int k = 4;
         reverse(arr1,0,arr1.length-1);
         reverse(arr1,0,k-1);
         reverse(arr1,k,arr1.length-1);
