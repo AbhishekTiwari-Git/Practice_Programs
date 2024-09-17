@@ -15,6 +15,7 @@ js.executeScript(“document.getElementByID(‘element id ’).value = ‘xyz’
 Js.executeScript(“alert(‘hello world’);”);
 js.executeScript(“return document.documentElement.innerText;”).toString();
 js.executeScript("arguments[0].click();", java);
+js.executeScript("window.scrollBy(0,document.body.scrollHeight)", "");
 ======================================================================================================
 Alert Handling (Alert Class)
 
@@ -209,6 +210,46 @@ con = DriverManager.getConnection("dburl",un,pwd);
 stmt.createConnection();
 
 ResultSet rs = stmt.execute(query);
+
+jsonUtils.update_JSONValue(file, "$..email", (String) tUtil.getFromSession("email"));
+String path = filePath + "/" + fileName;
+        System.out.println(path);
+        File file = new File(path);
+        FileReader reader = new FileReader(file);
+
+        try {
+            JSONObject root = mapper.readValue(file, JSONObject.class);
+
+            String jso = root.toJSONString();
+            System.out.println(jso);
+
+            Configuration configuration = Configuration.builder().jsonProvider(new JacksonJsonNodeJsonProvider())
+                    .mappingProvider(new JacksonMappingProvider()).build();
+
+            JsonNode updatedJson = com.jayway.jsonpath.JsonPath.using(configuration).parse(jso)
+                    .set(JsonPath, replaceValue).json();
+
+           // jso = updatedJson.toString();
+
+
+            jso = updatedJson.toString().replaceAll("\\\\", "");
+
+            System.out.println(jso);
+
+            FileWriter fw = new FileWriter(file);
+            try {
+                fw.write(jso);
+                System.out.println("Successfully updated json object to file...!!");
+            } catch (IOException ioe) {
+                System.out.println("Exception opening or accessing the file......!!" + ioe.getMessage());
+                System.out.println("Exception opening or accessing the file......!!" + ioe.getStackTrace());
+
+            } finally {
+                fw.flush();
+                fw.close();
+                reader.close();
+            }
+        }
 
 
 

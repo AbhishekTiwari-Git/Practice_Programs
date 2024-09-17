@@ -25,4 +25,5 @@ public class FindSqRoot extends Random {
         System.out.println(ans);
     }
 
+
 }
