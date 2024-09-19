@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class HeightOfBT {
 
@@ -48,7 +47,6 @@ public class HeightOfBT {
                 nodeCountAtLevel--;
             }
             numberOfLevels++;
-
         }
     }
 
