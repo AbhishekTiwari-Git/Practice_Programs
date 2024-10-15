@@ -251,6 +251,15 @@ String path = filePath + "/" + fileName;
             }
         }
 
+Q. How to prevent Reflection Attack in Singleton Class?
+A. In private Constructor of Singleton have one condition to check if browser is not null then throw the Exception for e.g.
+private Constructor()
+{
+if(instance!= null){
+throw new IlleagalArgumentException("message");
+}
+}
+
 
 
 
